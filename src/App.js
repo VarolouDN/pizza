@@ -1,7 +1,8 @@
 
 import './App.scss';
-/*import logoSvg from "./assets/img/pizza-logo.svg"*/
-import Header from './Header';
+import {Categories,Header} from './components';
+import CategoriesClass from './components/CategoriesClass';
+
 
 
 
@@ -65,7 +66,14 @@ function App() {
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <div className="categories">
+
+
+          <CategoriesClass onClickItem={(elem)=>console.log(elem)}  items={["Все","Мясные","Вегетарианская","Гриль","Острые","Закрытые"]}/>
+
+         {/*   <div className="categories">
+
+           <Categories/>
+
               <ul>
                 <li className="active">Все</li>
                 <li>Мясные</li>
@@ -75,6 +83,10 @@ function App() {
                 <li>Закрытые</li>
               </ul>
             </div>
+
+          */}
+
+
             <div className="sort">
               <div className="sort__label">
                 <svg
