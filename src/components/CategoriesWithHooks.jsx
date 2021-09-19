@@ -1,7 +1,15 @@
 import React from "react";
+import { useState } from "react";
 
+const CategoriesWithHookS=(props)=>{
 
-const Categories=(props)=>{
+const[activeItem,setActiveItem]=useState(null)
+
+function onSelectItem(index){
+
+  setActiveItem(index)  
+
+}
 
 
 
@@ -9,10 +17,14 @@ const Categories=(props)=>{
 return  <div className="categories">
 
 <ul>  
-<li className="active">Все</li>
-{props.items.map((elem,index)=>{
+<li  className={activeItem===null?"active":""}
+ onClick ={()=>onSelectItem(null)}>Все</li>
+
+
+{props.items && props.items.map((elem,index)=>{
     
-return <li  onClick ={()=>props.onClickItem(elem)} key={`${elem}_${index}`} > {elem}</li>
+return <li  className={activeItem===index?"active":""}
+ onClick ={()=>onSelectItem(index)} key={`${elem}_${index}`} > {elem}</li>
 
 })}
 
@@ -21,4 +33,4 @@ return <li  onClick ={()=>props.onClickItem(elem)} key={`${elem}_${index}`} > {e
 
 }
 
-export default Categories
+export default CategoriesWithHookS

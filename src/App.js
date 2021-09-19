@@ -1,7 +1,9 @@
 
 import './App.scss';
-import {Categories,Header} from './components';
-import CategoriesClass from './components/CategoriesClass';
+import {/*Categories,*/Header} from './components';
+/*import CategoriesClass from './components/CategoriesClass';*/
+
+import CategoriesWithHookS from './components/CategoriesWithHooks';
 
 
 
@@ -68,7 +70,7 @@ function App() {
           <div className="content__top">
 
 
-          <CategoriesClass onClickItem={(elem)=>console.log(elem)}  items={["Все","Мясные","Вегетарианская","Гриль","Острые","Закрытые"]}/>
+          <CategoriesWithHookS onClickItem={(elem)=>console.log(elem)}  items={["Мясные","Вегетарианская","Гриль","Острые","Закрытые"]}/>
 
          {/*   <div className="categories">
 

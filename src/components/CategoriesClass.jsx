@@ -24,6 +24,8 @@ render(){
 return  <div className="categories">
 
 <ul>  
+<li className={this.state.activeItem===null?"active":""} 
+onClick ={()=>this.onSelectItem(null)} > Все</li>
 {this.props.items.map((elem,index)=>{
     
 return <li className={this.state.activeItem===index?"active":""} 
