@@ -1,6 +1,7 @@
 
 import './App.scss';
-import logoSvg from "./assets/img/pizza-logo.svg"
+/*import logoSvg from "./assets/img/pizza-logo.svg"*/
+import Header from './Header';
 
 
 
@@ -8,8 +9,10 @@ import logoSvg from "./assets/img/pizza-logo.svg"
 function App() {
   return (
   <div>
+    
    <div className="wrapper">
-      <div className="header">
+<Header/>
+     {/* <div className="header">
         <div className="container">
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Pizza logo" />
@@ -56,6 +59,9 @@ function App() {
           </div>
         </div>
       </div>
+  */}
+
+
       <div className="content">
         <div className="container">
           <div className="content__top">
