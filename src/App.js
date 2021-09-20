@@ -4,6 +4,8 @@ import {/*Categories,*/Header} from './components';
 /*import CategoriesClass from './components/CategoriesClass';*/
 
 import CategoriesWithHookS from './components/CategoriesWithHooks';
+import SortPopup from './components/SortPopup';
+import SortPopupWithHooks from './components/SortPopupWithHooks';
 
 
 
@@ -88,7 +90,7 @@ function App() {
 
           */}
 
-
+               {/*
             <div className="sort">
               <div className="sort__label">
                 <svg
@@ -113,7 +115,10 @@ function App() {
                   <li>алфавиту</li>
                 </ul>
               </div>
-            </div>
+               </div>*/}
+
+           <SortPopupWithHooks varies={["популярности","цене","алфавиту"]}/>
+
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
