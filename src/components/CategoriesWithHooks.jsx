@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const CategoriesWithHookS=(props)=>{
+const CategoriesWithHooks=(props)=>{
 
 const[activeItem,setActiveItem]=useState(null)
 
@@ -33,4 +33,4 @@ return <li  className={activeItem===index?"active":""}
 
 }
 
-export default CategoriesWithHookS
+export default CategoriesWithHooks
