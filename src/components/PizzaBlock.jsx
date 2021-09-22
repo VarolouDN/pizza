@@ -1,7 +1,41 @@
-import React from 'react'
+import React,{useEffect, useRef, useState} from 'react'
 
 function PizzaBlock(props) {
   
+const[activePizzaSize,setActivePizzaSize]=useState(0)
+const[activePizzaType,setActivePizzaType]=useState(0)
+let[count,setCount]=useState(props.rating)
+
+
+const pizzaRef=useRef()
+/*console.log(pizzaRef)*/
+
+
+function letCount(){
+
+setCount(count++)
+
+}
+ 
+
+useEffect(()=>
+pizzaRef.current.addEventListener("click",letCount),
+
+ []
+)
+
+const chooseSize=(index)=>{
+setActivePizzaSize(index)
+  
+}
+const chooseType=(index)=>{
+setActivePizzaType(index)
+  
+}
+
+
+
+
     return (
         <div>
     
@@ -11,12 +45,13 @@ function PizzaBlock(props) {
     src={props.imageUrl}
     alt="Pizza"
   />
-  <h4 className="pizza-block__title">Чизбургер-пицца</h4>
+  <h4 className="pizza-block__title">{props.name}</h4>
   <div className="pizza-block__selector">
     <ul>
       {props.types.map((elem,index)=>{
        
-        return <li key={index} className="active">{elem===0?"тонкое":"традиционное"}</li>
+        return <li key={index} onClick={()=>chooseType(index)} className={activePizzaType===index?"active":""}>
+          {elem===0?"тонкое":"традиционное"}</li>
          
           
 })
@@ -24,14 +59,17 @@ function PizzaBlock(props) {
     </ul>
     <ul>
       {props.sizes.map((elem,index)=>{
-      return <li key={index} className="active">{elem}</li>})
+      return <li key={index} onClick={()=>chooseSize(index)} 
+      className={activePizzaSize===index?"active":""}>{elem} см.</li>})
       }
     
     </ul>
   </div>
   <div className="pizza-block__bottom">
     <div className="pizza-block__price">{`от ${props.price} ₽`}</div>
-    <div className="button button--outline button--add">
+
+
+    <div className="button button--outline button--add" ref={pizzaRef} /*onClick={letCount}*/ >
       <svg
         width="12"
         height="12"
@@ -44,8 +82,8 @@ function PizzaBlock(props) {
           fill="white"
         />
       </svg>
-      <span>Добавить</span>
-      <i>{props.rating}</i>
+      <span >Добавить</span>
+      <i>{/*pizzaRating*/}{count}</i>
     </div>
   </div>
 </div>
