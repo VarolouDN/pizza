@@ -8,7 +8,7 @@ function Button({className,children,...props}){
 
 
 
-return <div><button onClick={function(){alert("Hello!")}}className={classNames("button",className,{"button--cart":props.outline})}>
+return <div><button /*onClick={function(){alert("Hello!")}}*/className={classNames("button",className,{"button--cart":props.outline})}>
 {children}</button>
 
 </div>
