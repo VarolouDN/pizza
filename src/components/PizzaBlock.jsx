@@ -1,4 +1,5 @@
 import React,{useEffect, useRef, useState} from 'react'
+import PropTypes from 'prop-types';
 
 function PizzaBlock(props) {
   
@@ -90,6 +91,23 @@ setActivePizzaType(index)
 
         </div>
     )
+}
+
+PizzaBlock.propTypes={
+name:PropTypes.string.isRequired,
+rating:PropTypes.number.isRequired,
+price:PropTypes.number.isRequired,
+types:PropTypes.arrayOf(PropTypes.number).isRequired,
+sizes:PropTypes.arrayOf(PropTypes.number).isRequired
+
+
+}
+
+PizzaBlock.defaultProps={
+price:0,
+types:[],
+sizes:[]
+
 }
 
 export default PizzaBlock
