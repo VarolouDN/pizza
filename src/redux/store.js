@@ -4,8 +4,8 @@ import pizzas_Reducer from "./reducers/pizzas_Reducer.js"
 let reducers=combineReducers({
     
     
-filters_Reducer,
-pizzas_Reducer
+filters:filters_Reducer,
+pizzas:pizzas_Reducer
 
 })
 

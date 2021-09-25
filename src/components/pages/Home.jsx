@@ -4,6 +4,7 @@ import PizzaBlock from '../PizzaBlock'
 import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
 
 function Home(props) {
+  
 
     return (
         <div>
