@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoriesWithHooks from '../CategoriesWithHooks'
+import CategoriesWithHooks from '../categories/CategoriesWithHooks'
 import SortPopupWithHooks from '../SortPopupWithHooks'
 
 function Home(props) {

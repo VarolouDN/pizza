@@ -1,7 +1,7 @@
 import React from 'react'
-import CategoriesWithHooks from '../CategoriesWithHooks'
+import CategoriesWithHooks from '../categories/CategoriesWithHooks'
 import PizzaBlock from '../PizzaBlock'
-import SortPopupWithHooks from '../SortPopupWithHooks'
+import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
 
 function Home(props) {
   

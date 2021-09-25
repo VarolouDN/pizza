@@ -1,8 +1,8 @@
-import Categories from '../components/Categories';
+import Categories from '../components/categories/CategoriesWithHooks';
 
-import Header from '../components/Header';
+import Header from '../components/header/Header.jsx';
 
-import SortPopup from '../components/Header';
+import SortPopup from '../components/header/Header.jsx';
 import Cart from '../components/pages/Cart'
 
 export {
