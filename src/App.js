@@ -3,31 +3,46 @@ import './App.scss';
 import {Header,Cart} from './components';
 import React,{useEffect,useState} from 'react'
 import {Route} from "react-router-dom";
-
+import {useSelector,useDispatch} from "react-redux"
 
 import Home from './components/pages/Home';
 import { setPizzasActionCreator } from './redux/actions/pizzaActionCreators';
-import { connect } from 'react-redux';
+/*import { connect } from 'react-redux';*/
 
 
-/*
+
 function App() {
 
-const[pizzas,setPizzas]=useState([])
+/*const[pizzas,setPizzas]=useState([])*/
+const dispatch=useDispatch()
+const state =useSelector(({pizzas,filters})=>{
 
+return{
+pizzas:pizzas.pizzas,
+sortBy:filters.sortBy
+
+
+
+}
+
+}
+
+)
+
+console.log(state)
 
 useEffect(() => {
 
   fetch("http://localhost:3000/db.json")
 .then((response)=>response.json()).then(json=>{
-  setPizzas(json.pizzas)
+  dispatch(setPizzasActionCreator(json.pizzas))
 
 })
 
 }, []
 )
 
-console.log(pizzas)
+
 
 
   return (
@@ -39,7 +54,7 @@ console.log(pizzas)
     
       <div className="content">
 
-        <Route exact path="/" render={()=><Home pizzas= {pizzas}/>}/>
+        <Route exact path="/" render={()=><Home pizzas= {state.pizzas}/>}/>
         <Route  path="/cart" component={Cart}/>
       
       </div>
@@ -50,10 +65,10 @@ console.log(pizzas)
     </div>
   )
 }
-*/
 
+export default App
 
-
+/*
 class App extends React.Component{
 
 componentDidMount(){
@@ -120,3 +135,4 @@ setPizza:(pizzas)=>dispatch(setPizzasActionCreator(pizzas))
 
 
 export default connect (mapStateToProps,mapDispatchToProps) (App);
+*/
