@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 
 
 const SortPopupWithHooks=(props)=>{
-  
-    const[activeItem,setActiveItem]=useState(0)
+
+/*  1  */const[activeItem,setActiveItem]=useState(/* был 0+*/0)
 const[visiblePopup,setVisiblePopup]=useState(false)
 const sortRef=useRef(null)
 
@@ -29,8 +29,8 @@ const toggleVisiblePopup=()=>{
 }
 
 
-const chooseParam=(index)=>{
-    setActiveItem(index)
+/*2  +*/const chooseParam=(index)=>{
+    setActiveItem( index)
     setVisiblePopup(false)
 }
 
@@ -49,17 +49,17 @@ return <div ref ={sortRef} className="sort">
     />
   </svg>
   <b>Сортировка по:</b>
-  <span onClick={toggleVisiblePopup}>{props.varies[activeItem]}</span>
-  {window.visiblePopup=visiblePopup}
+{/*5 +*/} <span onClick={toggleVisiblePopup}>{props.varies[activeItem].name/* был activeItem*/ }</span>
+  {window.visiblePopup=visiblePopup }
 </div>
 {visiblePopup && <div className="sort__popup">
   <ul>
      {props.varies.map((elem,index)=>{
 
-     return <li key={`${elem}_${index}`} onClick={()=>chooseParam(index)} 
+ /*3+*/    return  <li key={`${elem.type}_${index}`} onClick={()=>chooseParam(index )} 
      
      
-     className={activeItem===index ? "active":""}>{elem}</li>
+ /*4+   */    className={activeItem===index ? "active":""}>{elem.name}</li>
 
 
       }) 

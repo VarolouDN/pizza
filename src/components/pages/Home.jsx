@@ -4,7 +4,7 @@ import PizzaBlock from '../PizzaBlock'
 import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
 
 function Home(props) {
-  
+
     return (
         <div>
                   <div className="container">
@@ -16,7 +16,8 @@ function Home(props) {
        
             
 
-           <SortPopupWithHooks varies={["популярности","цене","алфавиту"]}/>
+           <SortPopupWithHooks varies={[{name:"популярности",type:"popular"},
+           {name:"цене",type:"price"},{name:"алфавиту",type:"alphabet"}]}/>
 
           </div>
 

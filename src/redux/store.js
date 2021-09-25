@@ -1,9 +1,11 @@
 import { combineReducers, createStore } from "redux";
-import home_Reducer from "./home_Reducer.js"
+import filters_Reducer from "./reducers/filters_Reducer.js"
+import pizzas_Reducer from "./reducers/pizzas_Reducer.js"
 let reducers=combineReducers({
     
     
-home:home_Reducer
+filters_Reducer,
+pizzas_Reducer
 
 })
 

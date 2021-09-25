@@ -1,9 +1,9 @@
 
 
 const initialState={
+  category:0,
+sortBy:"popular"
 
-sortBy:"popular",
-category:0
 
 
 
@@ -16,6 +16,15 @@ const filters_Reducer=(state=initialState,action)=>{
 
 return {
 ...state,sortBy:action.payload
+
+}
+
+
+  }
+  if(action.type==="SET_CATEGORY"){
+
+return {
+...state,category:action.payload
 
 }
 
