@@ -1,14 +1,18 @@
 import React from "react";
 import { useState } from "react";
 
+
 const CategoriesWithHooks=(props)=>{
+
+
+
 
 const[activeItem,setActiveItem]=useState(null)
 
 function onSelectItem(index){
 
-  setActiveItem(index)  
-
+  setActiveItem(index) 
+  props.onClickItem(index)
 }
 
 

@@ -10,7 +10,7 @@ payload:name
 
 
 })
-export const setCategory=(catIndex)=>({
+export const setCategoryActionCreator=(catIndex)=>({
 
  
 type:"SET_CATEGORY",

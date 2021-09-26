@@ -2,9 +2,33 @@ import React from 'react'
 import CategoriesWithHooks from '../categories/CategoriesWithHooks'
 import PizzaBlock from '../PizzaBlock'
 import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
+import {useSelector,useDispatch} from "react-redux"
+import { setCategoryActionCreator } from '../../redux/actions/filtersActionCreators'
 
-function Home(props) {
-  
+function Home() {
+
+  const dispatch = useDispatch()
+
+
+  const state =useSelector(({pizzas,filters})=>{
+
+    return{
+    pizzas:pizzas.pizzas,
+    sortBy:filters.sortBy,
+    category:filters.category
+    
+    }
+    
+    }
+    
+    )
+const onClickItem=(index)=>{
+
+  dispatch(setCategoryActionCreator(index))
+
+}
+
+
 
     return (
         <div>
@@ -12,7 +36,8 @@ function Home(props) {
           <div className="content__top">
 
 
-          <CategoriesWithHooks onClickItem={(elem)=>console.log(elem)}  items={["Мясные","Вегетарианская","Гриль","Острые","Закрытые"]}/>
+          <CategoriesWithHooks onClickItem={(index)=>onClickItem(index)} category={state.category} 
+           items={["Мясные","Вегетарианская","Гриль","Острые","Закрытые"]}/>
 
        
             
@@ -27,7 +52,7 @@ function Home(props) {
 
 
 
-{props.pizzas.map((elem,index)=>{
+{state.pizzas.map((elem,index)=>{
   return  <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
   imageUrl={elem.imageUrl} id={elem.id}  types={elem.types}/>
 })
