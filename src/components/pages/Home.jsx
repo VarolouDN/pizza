@@ -4,6 +4,7 @@ import PizzaBlock from '../PizzaBlock'
 import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
 import {useSelector,useDispatch} from "react-redux"
 import { setCategoryActionCreator } from '../../redux/actions/filtersActionCreators'
+import Preloader from '../Preloader/Preloader'
 
 function Home() {
 
@@ -15,8 +16,8 @@ function Home() {
     return{
     pizzas:pizzas.pizzas,
     sortBy:filters.sortBy,
-    category:filters.category
-    
+    category:filters.category,
+    isLoaded:pizzas.isLoaded
     }
     
     }
@@ -37,10 +38,10 @@ const onClickItem=(index)=>{
 
 
           <CategoriesWithHooks onClickItem={(index)=>onClickItem(index)} category={state.category} 
-           items={["Мясные","Вегетарианская","Гриль","Острые","Закрытые"]}/>
+           items={["Мясные","Вегетарианская","Гриль","Острые","Закрытые"]} />
 
        
-            
+          
 
            <SortPopupWithHooks varies={[{name:"популярности",type:"popular"},
            {name:"цене",type:"price"},{name:"алфавиту",type:"alphabet"}]}/>
@@ -52,11 +53,14 @@ const onClickItem=(index)=>{
 
 
 
-{state.pizzas.map((elem,index)=>{
-  return  <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
-  imageUrl={elem.imageUrl} id={elem.id}  types={elem.types}/>
-})
+{state.isLoaded?state.pizzas.map((elem,index)=>{
+  return <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
+  imageUrl={elem.imageUrl} id={elem.id}  types={elem.types} isLoaded={state.isLoaded}/>
 
+}):Array(20).fill(0).map((_,index)=>{
+
+  return <Preloader key={index} />
+})
 }
 
 {/*

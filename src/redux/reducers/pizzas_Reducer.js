@@ -10,8 +10,8 @@ const initialState={
       if(action.type==="SET_PIZZAS"){
     
     return {
-    ...state,pizzas:action.payload
-    
+    ...state,pizzas:action.payload,
+       isLoaded:true
     }
     
     

@@ -1,7 +1,9 @@
 import React,{useEffect, useRef, useState} from 'react'
 import PropTypes from 'prop-types';
+import Preloader from "./Preloader/Preloader"
 
 function PizzaBlock(props) {
+
   
 const[activePizzaSize,setActivePizzaSize]=useState(0)
 const[activePizzaType,setActivePizzaType]=useState(0)
@@ -39,7 +41,10 @@ setActivePizzaType(index)
 
     return (
         <div>
-    
+
+
+
+
     <div className="pizza-block">
   <img
     className="pizza-block__image"
@@ -90,8 +95,17 @@ setActivePizzaType(index)
 </div>
 
         </div>
+
+
+
+
+
     )
 }
+
+
+
+
 
 PizzaBlock.propTypes={
 name:PropTypes.string.isRequired,
