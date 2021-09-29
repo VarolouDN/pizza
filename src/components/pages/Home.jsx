@@ -43,8 +43,8 @@ const onClickItem=(index)=>{
        
           
 
-           <SortPopupWithHooks varies={[{name:"популярности",type:"popular"},
-           {name:"цене",type:"price"},{name:"алфавиту",type:"alphabet"}]}/>
+           <SortPopupWithHooks sortBy={state.sortBy} varies={[{id:0,name:"популярности",type:"popular"},
+           {id:1,name:"цене",type:"price"},{id:2,name:"алфавиту",type:"alphabet"}]}/>
 
           </div>
 
@@ -54,7 +54,7 @@ const onClickItem=(index)=>{
 
 
 {state.isLoaded?state.pizzas.map((elem,index)=>{
-  return <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
+  return   <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
   imageUrl={elem.imageUrl} id={elem.id}  types={elem.types} isLoaded={state.isLoaded}/>
 
 }):Array(20).fill(0).map((_,index)=>{

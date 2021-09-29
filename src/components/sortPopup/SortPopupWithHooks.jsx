@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import { setSortBy } from "../../redux/actions/filtersActionCreators";
+import { useDispatch } from "react-redux";
 
 
 
 const SortPopupWithHooks=(props)=>{
-
-/*  1  */const[activeItem,setActiveItem]=useState(/* был 0+*/0)
+/*const[activeItem,setActiveItem]=useState(0)*/
 const[visiblePopup,setVisiblePopup]=useState(false)
 const sortRef=useRef(null)
+const dispatch = useDispatch()
+
+
 
 const func=(event)=>{
   
@@ -30,7 +33,8 @@ const toggleVisiblePopup=()=>{
 
 
 /*2  +*/const chooseParam=(index)=>{
-    setActiveItem( index)
+   dispatch (setSortBy(props.varies[index]))
+    /*setActiveItem( index)*/
     setVisiblePopup(false)
 }
 
@@ -49,7 +53,7 @@ return <div ref ={sortRef} className="sort">
     />
   </svg>
   <b>Сортировка по:</b>
-{/*5 +*/} <span onClick={toggleVisiblePopup}>{props.varies[activeItem].name/* был activeItem*/ }</span>
+{/*5 +*/} <span onClick={toggleVisiblePopup}>{props.varies[/*activeItem*/props.sortBy.id].name/* был activeItem*/ }</span>
   {window.visiblePopup=visiblePopup }
 </div>
 {visiblePopup && <div className="sort__popup">
@@ -59,7 +63,7 @@ return <div ref ={sortRef} className="sort">
  /*3+*/    return  <li key={`${elem.type}_${index}`} onClick={()=>chooseParam(index )} 
      
      
- /*4+   */    className={activeItem===index ? "active":""}>{elem.name}</li>
+ /*4+   */    className={/*activeItem*/props.sortBy.id===index ? "active":""}>{elem.name}</li>
 
 
       }) 

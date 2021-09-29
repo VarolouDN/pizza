@@ -1,8 +1,9 @@
+import {  } from "react-dom"
 
 
 const initialState={
-  category:0,
-sortBy:"popular"
+  category:null,
+sortBy:{id:0,type:"popular",name:"популярности"}
 
 
 

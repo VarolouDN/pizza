@@ -112,7 +112,8 @@ name:PropTypes.string.isRequired,
 rating:PropTypes.number.isRequired,
 price:PropTypes.number.isRequired,
 types:PropTypes.arrayOf(PropTypes.number).isRequired,
-sizes:PropTypes.arrayOf(PropTypes.number).isRequired
+sizes:PropTypes.arrayOf(PropTypes.number).isRequired,
+isLoaded:PropTypes.bool
 
 
 }

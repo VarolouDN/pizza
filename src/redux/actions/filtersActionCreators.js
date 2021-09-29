@@ -1,15 +1,15 @@
 
 
 
-export const setSortBy=(name)=>({
+export const setSortBy=(payload)=>({
 
  
 type:"SET_SORT_BY",
-payload:name
-
-
+payload
 
 })
+
+
 export const setCategoryActionCreator=(catIndex)=>({
 
  

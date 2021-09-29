@@ -6,10 +6,15 @@ export  const setPizzasActionCreator=(pizzas)=>({
 type:"SET_PIZZAS",payload:pizzas
 
 })
+export  const setLoadedPizzasActionCreator=(payload)=>({
 
-export const fetchPizzas=()=>(dispatch)=>{
+type:"SET_LOADED",payload:payload
 
-    axios.get/*fetch*/("http://localhost:3001/pizzas")
+})
+
+export const fetchPizzas=(category,sortBy)=>(dispatch)=>{
+dispatch(setLoadedPizzasActionCreator(false))
+    axios.get/*fetch*/(`http://localhost:3001/pizzas?category=${category}&sortBy=${sortBy}`)
     /*.then((response)=>response.json())*/.then(response=>{
       dispatch(setPizzasActionCreator(response.data));
  console.log(response.data)

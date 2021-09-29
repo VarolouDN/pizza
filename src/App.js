@@ -4,7 +4,7 @@ import {Header,Cart} from './components';
 import React,{useEffect} from 'react'
 import {Route} from "react-router-dom";
 import {useDispatch} from "react-redux"
-
+import { useSelector } from 'react-redux';
 import Home from './components/pages/Home';
 import { fetchPizzas, setPizzasActionCreator } from './redux/actions/pizzaActionCreators';
 /*import { connect } from 'react-redux';*/
@@ -15,24 +15,24 @@ function App() {
 
 /*const[pizzas,setPizzas]=useState([])*/
 const dispatch=useDispatch()
-/*const state =useSelector(({pizzas,filters})=>{
+const {category,sortBy} =useSelector(({pizzas,filters})=>{
 
 return{
 pizzas:pizzas.pizzas,
-sortBy:filters.sortBy
-
+sortBy:filters.sortBy,
+category:filters.category
 
 
 }
 
 }
 
-)*/
+)
 
 
 
 useEffect(() => {
-dispatch(fetchPizzas())
+dispatch(fetchPizzas(category,sortBy))
 
 /*  axios.get("http://localhost:3001/pizzas")
 .then(response=>{
@@ -40,7 +40,7 @@ dispatch(fetchPizzas())
 console.log(response.data)
 })*/
 
-}, []
+},[category,sortBy]
 )
 
 
