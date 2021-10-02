@@ -1,6 +1,22 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function Cart() {
+
+const state=useSelector(({cart})=>{
+
+return{
+
+totalCount:cart.totalCount,
+totalPrice:cart.totalPrice,
+items:cart.items
+}
+
+}
+
+)
+
+  
     return (
         <div>
 <div className="container container--cart">
@@ -24,16 +40,27 @@ function Cart() {
               </div>
             </div>
             <div className="content__items">
-              <div className="cart__item">
+
+
+
+
+
+
+{state.items.map((elem,index)=>{
+
+    return          <div key ={index} className="cart__item">
   <div className="cart__item-img">
     <img
       className="pizza-block__image"
-      src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+      src={elem.imageUrl}
       alt="Pizza"
     />
   </div>
   <div className="cart__item-info">
-    <h3>Сырный цыпленок</h3>
+
+
+
+    <h3>{elem.name}</h3>
     <p>тонкое тесто, 26 см.</p>
   </div>
   <div className="cart__item-count">
@@ -54,7 +81,7 @@ function Cart() {
     </div>
   </div>
   <div className="cart__item-price">
-    <b>770 ₽</b>
+    <b>{elem.price} ₽</b>
   </div>
   <div className="cart__item-remove">
     <div className="button button--outline button--circle">
@@ -66,6 +93,15 @@ function Cart() {
     </div>
   </div>
 </div>
+
+})
+}
+
+
+
+
+
+{/*
  <div className="cart__item">
   <div className="cart__item-img">
     <img
@@ -108,6 +144,14 @@ function Cart() {
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
  <div className="cart__item">
   <div className="cart__item-img">
     <img
@@ -150,6 +194,12 @@ function Cart() {
     </div>
   </div>
 </div>
+
+
+
+
+
+
  <div className="cart__item">
   <div className="cart__item-img">
     <img
@@ -192,12 +242,20 @@ function Cart() {
     </div>
   </div>
 </div>
+
+*/}
+
+
+
+
+
+
 
             </div>
             <div className="cart__bottom">
               <div className="cart__bottom-details">
-                <span> Всего пицц: <b>3 шт.</b> </span>
-                <span> Сумма заказа: <b>900 ₽</b> </span>
+                <span> Всего пицц: <b>{state.totalCount} шт.</b> </span>
+                <span> Сумма заказа: <b>{state.totalPrice} ₽</b> </span>
               </div>
               <div className="cart__bottom-buttons">
                 <a href="/" className="button button--outline button--add go-back-btn">

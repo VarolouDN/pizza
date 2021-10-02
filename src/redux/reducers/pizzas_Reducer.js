@@ -1,6 +1,7 @@
 const initialState={
     pizzas:[],
-    isLoaded:false
+    isLoaded:false,
+    pizzaCount:0
 
     }
     
@@ -16,6 +17,7 @@ const initialState={
     
     
       }
+
     
     
         return state

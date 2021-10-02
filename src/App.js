@@ -20,7 +20,7 @@ const {category,sortBy,pizzas} =useSelector(({pizzas,filters})=>{
 return{
 pizzas:pizzas.pizzas,
 sortBy:filters.sortBy,
-category:filters.category
+category:filters.category,
 
 
 }
@@ -47,7 +47,7 @@ dispatch(fetchPizzas(category,sortBy))
     
    <div className="wrapper">
 
-      <Header/>
+        <Header/>
     
       <div className="content">
 

@@ -5,19 +5,35 @@ import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
 import {useSelector,useDispatch} from "react-redux"
 import { setCategoryActionCreator } from '../../redux/actions/filtersActionCreators'
 import Preloader from '../Preloader/Preloader'
+import { addPizzaActionCreator } from '../../redux/actions/cartActionCreators'
+
 
 function Home() {
 
   const dispatch = useDispatch()
 
+const varies=[{idItem:0,name:"популярности",type:"rating",order:"desc"},
+{idItem:1,name:"цене",type:"price",order:"asc"},{idItem:2,name:"алфавиту",type:"name",order:"desc"}]
 
-  const state =useSelector(({pizzas,filters})=>{
+
+
+
+
+  const state =useSelector(({pizzas,filters,cart})=>{
 
     return{
     pizzas:pizzas.pizzas,
     sortBy:filters.sortBy,
     category:filters.category,
-    isLoaded:pizzas.isLoaded
+    isLoaded:pizzas.isLoaded,
+    totalCount:cart.totalCount,
+    totalPrice:cart.totalPrice,
+    pizzaCount:cart.items.map(elem=>{
+     return elem.pizzaCount
+
+    })
+    
+
     }
     
     }
@@ -28,6 +44,15 @@ const onClickItem=(index)=>{
   dispatch(setCategoryActionCreator(index))
 
 }
+
+
+const addPizza=(elem)=>{
+
+  dispatch(addPizzaActionCreator(elem))
+  
+  
+  }
+  
 
 
 
@@ -43,8 +68,7 @@ const onClickItem=(index)=>{
        
           
 
-           <SortPopupWithHooks sortBy={state.sortBy} varies={[{idItem:0,name:"популярности",type:"rating",order:"desc"},
-           {idItem:1,name:"цене",type:"price",order:"asc"},{idItem:2,name:"алфавиту",type:"name",order:"desc"}]}/>
+           <SortPopupWithHooks sortBy={state.sortBy} varies={varies}/>
 
           </div>
 
@@ -55,7 +79,8 @@ const onClickItem=(index)=>{
 
 {state.isLoaded?state.pizzas.map((elem,index)=>{
   return   <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
-  imageUrl={elem.imageUrl} idItem={elem.idItem}  types={elem.types} isLoaded={state.isLoaded}/>
+  imageUrl={elem.imageUrl} idItem={elem.idItem}  types={elem.types} isLoaded={state.isLoaded} addPizza={()=>addPizza(elem) }
+   totalCount={state.totalCount} pizzaCount={()=>console.log("ку")}/>
 
 }):Array(20).fill(0).map((_,index)=>{
 
