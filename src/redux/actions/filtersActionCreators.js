@@ -5,7 +5,7 @@ export const setSortBy=(payload)=>({
 
  
 type:"SET_SORT_BY",
-payload
+payload:payload
 
 })
 

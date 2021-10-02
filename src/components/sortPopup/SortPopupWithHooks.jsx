@@ -5,12 +5,13 @@ import { useDispatch } from "react-redux";
 
 
 const SortPopupWithHooks=(props)=>{
+
+
+  
 /*const[activeItem,setActiveItem]=useState(0)*/
 const[visiblePopup,setVisiblePopup]=useState(false)
 const sortRef=useRef(null)
 const dispatch = useDispatch()
-
-
 
 const func=(event)=>{
   
@@ -53,7 +54,7 @@ return <div ref ={sortRef} className="sort">
     />
   </svg>
   <b>Сортировка по:</b>
-{/*5 +*/} <span onClick={toggleVisiblePopup}>{props.varies[/*activeItem*/props.sortBy.id].name/* был activeItem*/ }</span>
+{/*5 +*/} <span onClick={toggleVisiblePopup}>{props.varies[/*activeItem*/props.sortBy.idItem].name/* был activeItem*/ }</span>
   {window.visiblePopup=visiblePopup }
 </div>
 {visiblePopup && <div className="sort__popup">
@@ -63,7 +64,7 @@ return <div ref ={sortRef} className="sort">
  /*3+*/    return  <li key={`${elem.type}_${index}`} onClick={()=>chooseParam(index )} 
      
      
- /*4+   */    className={/*activeItem*/props.sortBy.id===index ? "active":""}>{elem.name}</li>
+ /*4+   */    className={/*activeItem*/props.sortBy.idItem===index ? "active":""}>{elem.name}</li>
 
 
       }) 

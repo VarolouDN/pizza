@@ -3,7 +3,7 @@ import {  } from "react-dom"
 
 const initialState={
   category:null,
-sortBy:{id:0,type:"popular",name:"популярности"}
+sortBy:{idItem:0,type:"rating",name:"популярности",order:"desc"}
 
 
 

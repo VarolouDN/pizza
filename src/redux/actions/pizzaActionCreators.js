@@ -13,11 +13,12 @@ type:"SET_LOADED",payload:payload
 })
 
 export const fetchPizzas=(category,sortBy)=>(dispatch)=>{
+  
 dispatch(setLoadedPizzasActionCreator(false))
-    axios.get/*fetch*/(`http://localhost:3001/pizzas?category=${category}&sortBy=${sortBy}`)
+    axios.get/*fetch*/(`http://localhost:3001/pizzas?category=${category}&_sort=${sortBy.type}&_={desc}`)
     /*.then((response)=>response.json())*/.then(response=>{
       dispatch(setPizzasActionCreator(response.data));
  console.log(response.data)
-    })
 
+    })
 }
