@@ -34,7 +34,7 @@ const initialState={
     if(action.type==="SET_TOTAL_COUNT"){
   
   return {
-  ...state,totalCount:action.payload++
+  ...state,totalCount:state.totalCount+1
   
   }
     }
