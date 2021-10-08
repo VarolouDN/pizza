@@ -1,9 +1,9 @@
- export const addPizzaActionCreator=(payload)=>{
+ export const setCartPizzasActionCreator=(id)=>{
 
 return {
 
 type:"SET_CART_PIZZAS",
-payload:payload
+payload:id
 
 }
 

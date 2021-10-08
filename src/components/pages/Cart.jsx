@@ -47,6 +47,7 @@ items:cart.items
 
 
 {state.items.map((elem,index)=>{
+  
 
     return          <div key ={index} className="cart__item">
   <div className="cart__item-img">

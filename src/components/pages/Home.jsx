@@ -5,7 +5,8 @@ import SortPopupWithHooks from '../sortPopup/SortPopupWithHooks'
 import {useSelector,useDispatch} from "react-redux"
 import { setCategoryActionCreator } from '../../redux/actions/filtersActionCreators'
 import Preloader from '../Preloader/Preloader'
-import { addPizzaActionCreator } from '../../redux/actions/cartActionCreators'
+import { addPizzaActionCreator, setCartPizzasActionCreator } from '../../redux/actions/cartActionCreators'
+import { setPizzasInfoActionCreator } from '../../redux/actions/pizzaActionCreators'
 
 
 function Home() {
@@ -28,10 +29,8 @@ const varies=[{idItem:0,name:"популярности",type:"rating",order:"des
     isLoaded:pizzas.isLoaded,
     totalCount:cart.totalCount,
     totalPrice:cart.totalPrice,
-    pizzaCount:cart.items.map(elem=>{
-     return elem.pizzaCount
-
-    })
+    pizzasInfo:pizzas.pizzasInfo,
+    pizzasCount:pizzas.pizzasInfo
     
 
     }
@@ -46,14 +45,29 @@ const onClickItem=(index)=>{
 }
 
 
+/*const addPizzasInfo=(elem)=>{
+  let obj={
+  id:elem.id
+  
+
+  }
+  dispatch(setCartPizzasActionCreator(elem))
+
+
+
+dispatch(setPizzasInfoActionCreator(obj))
+
+}*/
+
+/*
 const addPizza=(elem)=>{
 
-  dispatch(addPizzaActionCreator(elem))
+  dispatch(setCartPizzasActionCreator(elem))
   
   
   }
   
-
+*/
 
 
     return (
@@ -78,9 +92,9 @@ const addPizza=(elem)=>{
 
 
 {state.isLoaded?state.pizzas.map((elem,index)=>{
-  return   <PizzaBlock rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
-  imageUrl={elem.imageUrl} idItem={elem.idItem}  types={elem.types} isLoaded={state.isLoaded} addPizza={()=>addPizza(elem) }
-   totalCount={state.totalCount} pizzaCount={()=>console.log("ку")}/>
+  return   <PizzaBlock elem={elem} rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
+  imageUrl={elem.imageUrl} id={elem.id}  types={elem.types} isLoaded={state.isLoaded} /*addPizza={()=>addPizza(elem) }*/
+   totalCount={state.totalCount} pizzaCount={state.pizzaCount} pizzaInfo={ state.pizzasInfo}/* addPizzasInfo={()=>addPizzasInfo(elem)}*//>
 
 }):Array(20).fill(0).map((_,index)=>{
 

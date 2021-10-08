@@ -1,11 +1,13 @@
 import React,{useEffect, useRef, useState} from 'react'
 import PropTypes from 'prop-types';
 import Preloader from "./Preloader/Preloader"
-import { setPizzaCountActionCreator, setTotalCountActionCreator, setTotalPriceActionCreator } from '../redux/actions/cartActionCreators';
+import { setCartPizzasActionCreator, setPizzaCountActionCreator, setTotalCountActionCreator, setTotalPriceActionCreator } from '../redux/actions/cartActionCreators';
 import { useDispatch } from 'react-redux';
+import { setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
 
 function PizzaBlock(props) {
 
+  
 
 const[activePizzaSize,setActivePizzaSize]=useState(0)
 const[activePizzaType,setActivePizzaType]=useState(0)
@@ -18,13 +20,37 @@ const pizzaRef=useRef()
 
 
 
+const addPizzasInfo=()=>{
+  let obj={
+  id:props.id,
+  count:count
+
+  }
+  dispatch(setCartPizzasActionCreator(props.elem))
+
+
+
+dispatch(setPizzasInfoActionCreator(obj))
+
+
+
+}
+
+
+
+
+
+
+
+
+
 
 function letCount(){
 
 setCount(++count)
 dispatch(setTotalCountActionCreator(count))
 dispatch(setTotalPriceActionCreator(props.price))
-dispatch(setPizzaCountActionCreator(props.id))
+/*dispatch(setPizzaCountActionCreator(props.id))*/
 }
  
 
@@ -82,7 +108,7 @@ setActivePizzaType(index)
     <div className="pizza-block__price">{`от ${props.price} ₽`}</div>
 
 
-    <div className="button button--outline button--add" ref={pizzaRef} /*onClick={props.addPizza}*/onClick={props.addPizza} >
+    <div className="button button--outline button--add" ref={pizzaRef} /*onClick={props.addPizza}*/onClick={addPizzasInfo} >
       <svg
         width="12"
         height="12"

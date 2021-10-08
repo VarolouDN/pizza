@@ -22,3 +22,23 @@ dispatch(setLoadedPizzasActionCreator(false))
 
     })
 }
+
+
+export const setPizzasInfoActionCreator=(elem)=>{
+
+  return {
+     type:"SET_PIZZAS_INFO",
+     payload:elem
+
+
+  }
+}
+export const setPizzasCount=(elem)=>{
+
+  return {
+     type:"SET_PIZZAS_INFO",
+     payload:elem
+
+
+  }
+}

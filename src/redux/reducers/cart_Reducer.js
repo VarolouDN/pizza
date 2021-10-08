@@ -15,7 +15,7 @@ const initialState={
   const cart_Reducer=(state=initialState,action)=>{
   
     if(action.type==="SET_CART_PIZZAS"){
-  
+   
   return {
   ...state,items:[...state.items,action.payload]
   
@@ -37,7 +37,7 @@ const initialState={
   ...state,totalCount:state.totalCount+1
   
   }
-    }
+    }/*
     if(action.type==="SET_PIZZA_COUNT"){
   
   return {
@@ -46,7 +46,7 @@ const initialState={
   }
   
   
-    }
+    }*/
   
   
       return state
