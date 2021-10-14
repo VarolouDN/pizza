@@ -24,11 +24,11 @@ dispatch(setLoadedPizzasActionCreator(false))
 }
 
 
-export const setPizzasInfoActionCreator=(elem)=>{
+export const setPizzasInfoActionCreator=(obj)=>{
 
   return {
      type:"SET_PIZZAS_INFO",
-     payload:elem
+     payload:obj
 
 
   }

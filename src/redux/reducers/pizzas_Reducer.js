@@ -4,9 +4,7 @@ const initialState={
     pizzas:[],
     isLoaded:false,
     pizzasCount:0,
-    pizzasInfo:[
-     
-    ]
+    pizzasInfo:[]
 
     }
     
@@ -20,7 +18,37 @@ const initialState={
        isLoaded:true
     }
   }
+
+
+
+  
     
+   /*   if(action.type==="SET_PIZZAS_COUNT"){
+    
+    return {
+    ...state,
+    pizzasInfo.pizzasCount:action.payload
+    }
+  }
+    
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       if(action.type==="SET_PIZZAS_INFO"){
@@ -38,7 +66,7 @@ return {
 
 return {
   ...state,pizzasInfo:[...state.pizzasInfo.map(elem=>elem.id===action.payload.id?
-    {id:action.payload.id,count:action.payload.count}:elem)]
+    {id:action.payload.id,count:action.payload.count,index:action.payload.index,item:action.payload.item}:elem)]
   }
 
       }

@@ -21,7 +21,8 @@ function onSelectItem(index){
 return  <div className="categories">
 
 <ul>  
-<li  className={/*activeItem*/props.category===null?"active":""}
+
+<li  className={props.category===null?"active":""}
  onClick ={()=>onSelectItem(null)}>Все</li>
 
 

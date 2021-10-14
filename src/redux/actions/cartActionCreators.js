@@ -9,19 +9,42 @@ payload:id
 
  }
  
-
-
- export const setTotalCountActionCreator=(payload)=>{
+ export const setCartLoaderActionCreator=(payload)=>{
 
 return {
 
-type:"SET_TOTAL_COUNT",
+type:"SET_CART_LOADER",
 payload
 
 }
 
  }
  
+
+
+ export const setTotalCountPlusActionCreator=()=>{
+
+return {
+
+type:"SET_TOTAL_COUNT_PLUS",
+
+
+}
+
+ }
+ export const setTotalCountMinusActionCreator=()=>{
+
+return {
+
+type:"SET_TOTAL_COUNT_MINUS",
+
+
+}
+
+ }
+ 
+
+
  export const setTotalPriceActionCreator=(payload)=>{
 
 return {

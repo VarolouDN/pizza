@@ -2,8 +2,8 @@
 const initialState={
     items:[],
     totalPrice:0,
-    totalCount:0
-  
+    totalCount:0,
+   cartIsLoaded:false
   
   
   
@@ -22,6 +22,26 @@ const initialState={
   }
 }
 
+
+    if(action.type==="SET_CART_LOADER"){
+   
+  return {
+  ...state,cartIsLoaded:action.payload
+  
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
     if(action.type==="SET_TOTAL_PRICE"){
   
   return {
@@ -31,10 +51,17 @@ const initialState={
   
   
     }
-    if(action.type==="SET_TOTAL_COUNT"){
-  
+    if(action.type==="SET_TOTAL_COUNT_PLUS"){
+   
   return {
   ...state,totalCount:state.totalCount+1
+  
+  }
+}
+    if(action.type==="SET_TOTAL_COUNT_MINUS"){
+   
+  return {
+  ...state,totalCount:state.totalCount-1
   
   }
     }/*
