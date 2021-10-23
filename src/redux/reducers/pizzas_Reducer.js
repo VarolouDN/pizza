@@ -3,7 +3,10 @@
 const initialState={
     pizzas:[],
     isLoaded:false,
-    pizzasCount:0,
+    
+  
+    
+    
     pizzasInfo:[]
     }
     
@@ -21,17 +24,28 @@ const initialState={
 
 
   
+   
+     if(action.type==="SET_PIZZAS_COUNT"){
     
-   /*   if(action.type==="SET_PIZZAS_COUNT"){
+
     
+      if(state.pizzas.length===0){
+
+    state.pizzas.pizzas.map(elem=>elem?{...elem,pizzasCount:0}:elem)
+      }
+
+
+
+
+      if(state.pizzas.length>=0){
     return {
-    ...state,
-    pizzasInfo.pizzasCount:action.payload
-    }
+      
+   ...state,pizzas:[...state.pizzas.map(elem=>elem.id===action.payload.id?{...elem,pizzasCount:action.payload.count}:elem)]
+    
+}
   }
     
-*/
-
+     }
 
 
 

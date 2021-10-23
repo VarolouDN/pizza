@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Preloader from "./Preloader/Preloader"
 import { setCartPizzasActionCreator, setPizzaCountActionCreator, setTotalCountActionCreator, setTotalCountPlusActionCreator, setTotalPriceActionCreator } from '../redux/actions/cartActionCreators';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
+import { setPizzasCount, setPizzasCountActionCreator, setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
 
 function PizzaBlock(props) {
-  debugger
+  
 const[activePizzaSize,setActivePizzaSize]=useState(0)
 const[activePizzaType,setActivePizzaType]=useState(0)
 /*
@@ -22,7 +22,7 @@ pizzasInfo:pizzas.pizzasInfo
 }
 )
 */
-let [inCount,setInCount]=useState(0)
+let [inCount,setInCount]=useState(props.pizzasCount)
 const dispatch=useDispatch()
 
 const pizzaRef=useRef()
@@ -53,7 +53,12 @@ dispatch(setTotalCountPlusActionCreator(inCount))
 dispatch(setTotalPriceActionCreator(props.price))
 /*dispatch(setPizzaCountActionCreator(props.id))*/
 }
-let obj={
+
+
+const addPizzasInfo=()=>{
+ setInCount(++inCount)
+
+ let obj={
   id:props.id,
   count:inCount,
    url:props.imageUrl,
@@ -64,15 +69,14 @@ let obj={
    index:props.index
   }
 
-const addPizzasInfo=()=>{
- setInCount(++inCount)
+
 
  
   dispatch(setCartPizzasActionCreator(props.elem))
 
 dispatch(setPizzasInfoActionCreator(obj))
 
-
+dispatch(setPizzasCountActionCreator(obj))
 
 }
 
@@ -159,7 +163,7 @@ inCount:props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count
         />
       </svg>
       <span >Добавить</span>
-      <i>{props.pizzasInfo.length===0?0:props.pizzasInfo.some((el,_,arr)=>el.id===props.elem.id && console.log(el.count))}
+      <i>{props.pizzasCount}
       </i>
     </div>
   </div>
