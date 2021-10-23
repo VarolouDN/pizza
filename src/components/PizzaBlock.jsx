@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
 
 function PizzaBlock(props) {
-  
+  debugger
 const[activePizzaSize,setActivePizzaSize]=useState(0)
 const[activePizzaType,setActivePizzaType]=useState(0)
 /*
@@ -159,7 +159,7 @@ inCount:props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count
         />
       </svg>
       <span >Добавить</span>
-      <i>{props.pizzasInfo.length===0?0:props.elem.count}
+      <i>{props.pizzasInfo.length===0?0:props.pizzasInfo.some((el,_,arr)=>el.id===props.elem.id && console.log(el.count))}
       </i>
     </div>
   </div>
@@ -172,6 +172,7 @@ inCount:props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count
 
 
     )
+    
 }
 
 

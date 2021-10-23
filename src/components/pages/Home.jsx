@@ -94,7 +94,7 @@ const addPizza=(elem)=>{
 {state.isLoaded?state.pizzas.map((elem,index)=>{
   return   <PizzaBlock elem={elem} rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
   imageUrl={elem.imageUrl} id={elem.id}  types={elem.types} isLoaded={state.isLoaded} /*addPizza={()=>addPizza(elem) }*/
-   totalCount={state.totalCount} /*pizzaCount={state.pizzaCount}*/pizzasInfo={state.pizzasInfo}/* addPizzasInfo={()=>addPizzasInfo(elem)}*/index={index}/>
+   totalCount={state.totalCount}/* pizzaCount={state.} */pizzasInfo={state.pizzasInfo}/* addPizzasInfo={()=>addPizzasInfo(elem)}*/index={index}/>
 
 }):Array(20).fill(0).map((_,index)=>{
 
