@@ -5,7 +5,6 @@ const initialState={
     isLoaded:false,
     pizzasCount:0,
     pizzasInfo:[]
-
     }
     
     
@@ -66,7 +65,9 @@ return {
 
 return {
   ...state,pizzasInfo:[...state.pizzasInfo.map(elem=>elem.id===action.payload.id?
-    {id:action.payload.id,count:action.payload.count,index:action.payload.index,item:action.payload.item}:elem)]
+    {id:action.payload.id,count:action.payload.count,/*item:action.payload.item*/
+      url:action.payload.url,name:action.payload.name,size:action.payload.size,
+      type:action.payload.type,item:action.payload.item,index:action.payload.index}:elem)]
   }
 
       }

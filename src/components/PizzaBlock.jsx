@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
 
 function PizzaBlock(props) {
-
-
   
 const[activePizzaSize,setActivePizzaSize]=useState(0)
 const[activePizzaType,setActivePizzaType]=useState(0)
@@ -31,36 +29,46 @@ const pizzaRef=useRef()
 /*console.log(pizzaRef)*/
 
 
+/*let inCount=
+  
+   props.pizzasInfo.length===0?0:props.pizzasInfo.filter
+((elem,_,arr)=>elem.id===props.id )
+*/
 
 
 
 
+/*if(props.pizzasInfo.length!==0){
+  setInCount(props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count))
 
-
-
-
+}
+*/
 
 
 function letCount(){
 
-setInCount(++inCount)
-
+/*setInCount(++inCount)*/
+/*dispatch(setTotalCountPlusActionCreator(inCount))*/
 dispatch(setTotalCountPlusActionCreator(inCount))
 dispatch(setTotalPriceActionCreator(props.price))
 /*dispatch(setPizzaCountActionCreator(props.id))*/
 }
- 
-
-const addPizzasInfo=()=>{
-  let obj={
+let obj={
   id:props.id,
   count:inCount,
-  index:props.index,
-   item:props.elem
+   url:props.imageUrl,
+   name:props.name,
+   size:props.sizes[activePizzaSize],
+   type:props.types[activePizzaType],
+   item:props.elem,
+   index:props.index
   }
+
+const addPizzasInfo=()=>{
+ setInCount(++inCount)
+
+ 
   dispatch(setCartPizzasActionCreator(props.elem))
-
-
 
 dispatch(setPizzasInfoActionCreator(obj))
 
@@ -73,8 +81,12 @@ dispatch(setPizzasInfoActionCreator(obj))
 useEffect(()=>{
 pizzaRef.current.addEventListener("click",letCount)
 
-},
 
+/*if(props.pizzasInfo.length!==0){
+  setInCount(props.pizzasInfo.index.count)
+}*/
+
+},
  []
 )
 
@@ -87,13 +99,15 @@ setActivePizzaType(index)
   
 }
 
-const realCount=()=>{
+/*const realCount=()=>{
 
 props.cartIsLoaded===true?props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && setInCount(arr[0]) ):setInCount(0)
 
 
-}
+}*/
 
+/*let result=props.pizzasInfo.length===0?
+inCount:props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count)*/
 
     return (
         <div>
@@ -145,9 +159,7 @@ props.cartIsLoaded===true?props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.
         />
       </svg>
       <span >Добавить</span>
-      <i>{/*pizzaRating*/}{/*{props.pizzasInfo===[]?count:props.pizzasInfo.filter(elem =>
-        
-      elem.id===props.id && elem.count)}*/}{realCount}
+      <i>{props.pizzasInfo.length===0?0:props.elem.count}
       </i>
     </div>
   </div>
