@@ -28,8 +28,8 @@ return  <div className="categories">
 
 {props.items && props.items.map((elem,index)=>{
     
-return <li  className={/*activeItem*/props.category===index?"active":""}
- onClick ={()=>onSelectItem(index)} key={`${elem}_${index}`} > {elem}</li>
+return <li  className={/*activeItem*/props.category===index ?"active":""}
+ onClick ={()=>onSelectItem(index)} key={`${elem}_${index}`} >{elem}</li>
 
 })}
 

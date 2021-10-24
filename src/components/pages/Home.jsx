@@ -69,6 +69,16 @@ const addPizza=(elem)=>{
   
 */
 
+const pInfo=(elem)=>{
+
+state.pizzasInfo.some(e=>e.id===elem.id && console.log(e))
+
+
+}
+
+
+
+
 
     return (
         <div>
