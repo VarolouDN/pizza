@@ -3,57 +3,36 @@ import PropTypes from 'prop-types';
 import Preloader from "./Preloader/Preloader"
 import { setCartPizzasActionCreator, setPizzaCountActionCreator, setTotalCountActionCreator, setTotalCountPlusActionCreator, setTotalPriceActionCreator } from '../redux/actions/cartActionCreators';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPizzasCount, setPizzasCountActionCreator, setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
+import { setFullPizzasCountActionCreator, setFullPizzasGlobalCountActionCreator, setPizzasCount, setPizzasCountActionCreator, setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
 
 function PizzaBlock(props) {
 
 
-
 const[activePizzaSize,setActivePizzaSize]=useState(0)
 const[activePizzaType,setActivePizzaType]=useState(0)
-/*
-const state=useSelector(({pizzas})=>{
 
-return {
 
-pizzasInfo:pizzas.pizzasInfo
 
+let result=props.fullPizzas.some(e=>e.id===props.id /*&& e.category===props.category*/ )?props.fullPizzas.filter(e=>e.id===props.id)[0]:props
+
+console.log(result.pizzasCount)
+
+
+
+
+let inCount=result.pizzasCount
+/*условие обнуляющее useState*/
+/*let [inCount,setInCount]=useState(result.pizzasCount)
+console.log(inCount)
+/*if(props.pizzasCount>0){
+  setInCount(result.pizzasCount)
 }
-
-
-}
-)
-*/
-/*
-let pizzasCount1=props.pizzasCount
-props.pizzasInfo.map(e=>e.id===props.elem.id?props.pizzasCount=e.pizzasCount:props.pizzasCount)
 */
 
-let result=!props.pizzasInfo.some(e=>e.id===props.id)?0:props.pizzasCount
-
-
-
-let [inCount,setInCount]=useState(result)
 const dispatch=useDispatch()
 
 const pizzaRef=useRef()
-/*console.log(pizzaRef)*/
 
-
-/*let inCount=
-  
-   props.pizzasInfo.length===0?0:props.pizzasInfo.filter
-((elem,_,arr)=>elem.id===props.id )
-*/
-
-
-
-
-/*if(props.pizzasInfo.length!==0){
-  setInCount(props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count))
-
-}
-*/
 
 
 
@@ -64,23 +43,58 @@ function letCount(){
 
 /*setInCount(++inCount)*/
 /*dispatch(setTotalCountPlusActionCreator(inCount))*/
-dispatch(setTotalCountPlusActionCreator(inCount))
-dispatch(setTotalPriceActionCreator(props.price))
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*dispatch(setTotalCountPlusActionCreator(result.pizzasCount))
+
+dispatch(setTotalPriceActionCreator(props.price))*/
+
+
+
+
+
+
+
+
+
 /*dispatch(setPizzaCountActionCreator(props.id))*/
 }
 
 
 const addPizzasInfo=()=>{
- setInCount(++inCount)
+  /*или здесь условие*/
 
+  dispatch(setTotalCountPlusActionCreator(result.pizzasCount))
+
+  dispatch(setTotalPriceActionCreator(props.price))
+
+
+
+  dispatch(setFullPizzasGlobalCountActionCreator(props.id))
+ 
+ /*setInCount(++inCount)*/
+
+ console.log(result.pizzasCount)
  let obj={
   id:props.id,
-  count:inCount,
+  count:result.pizzasCount,
    url:props.imageUrl,
    name:props.name,
    size:props.sizes[activePizzaSize],
    type:props.types[activePizzaType],
    item:props.elem,
+   price:props.price,
    index:props.index
   }
 
@@ -92,6 +106,7 @@ const addPizzasInfo=()=>{
 dispatch(setPizzasInfoActionCreator(obj))
 
 dispatch(setPizzasCountActionCreator(obj))
+dispatch(setFullPizzasCountActionCreator(obj))
 
 }
 
@@ -101,9 +116,7 @@ useEffect(()=>{
 pizzaRef.current.addEventListener("click",letCount)
 
 
-/*if(props.pizzasInfo.length!==0){
-  setInCount(props.pizzasInfo.index.count)
-}*/
+
 
 },
  []
@@ -118,16 +131,6 @@ setActivePizzaType(index)
   
 }
 
-/*const realCount=()=>{
-
-props.cartIsLoaded===true?props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && setInCount(arr[0]) ):setInCount(0)
-
-
-}*/
-
-/*let result=props.pizzasInfo.length===0?
-inCount:props.pizzasInfo.filter((elem,_,arr)=>elem.id===props.id && arr[0].count)*/
-console.log(result)
     return (
 
      
@@ -180,7 +183,7 @@ console.log(result)
         />
       </svg>
       <span >Добавить</span>
-      <i>{result}
+      <i>{result.pizzasCount}
       </i>
     </div>
   </div>

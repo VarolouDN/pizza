@@ -6,7 +6,7 @@ import {Route} from "react-router-dom";
 import {useDispatch} from "react-redux"
 import { useSelector } from 'react-redux';
 import Home from './components/pages/Home';
-import { fetchPizzas, setPizzasActionCreator } from './redux/actions/pizzaActionCreators';
+import { fetchPizzas, setFullPizzasActionCreator, setFullPizzasActionCreatorThunk, setPizzasActionCreator } from './redux/actions/pizzaActionCreators';
 /*import { connect } from 'react-redux';*/
 
 
@@ -15,13 +15,13 @@ function App() {
 
 /*const[pizzas,setPizzas]=useState([])*/
 const dispatch=useDispatch()
-const {category,sortBy,pizzas} =useSelector(({pizzas,filters})=>{
+const state =useSelector(({pizzas,filters})=>{
 
 return{
 pizzas:pizzas.pizzas,
 sortBy:filters.sortBy,
 category:filters.category,
-
+fullPizzas:pizzas.fullPizzas
 
 }
 
@@ -32,11 +32,14 @@ category:filters.category,
 
 
 useEffect(() => {
-dispatch(fetchPizzas(category,sortBy))
+dispatch(fetchPizzas(state.category,state.sortBy))
 
+if(state.fullPizzas.length===0){
 
+dispatch(setFullPizzasActionCreatorThunk)
+}
 
-},[category,sortBy]
+},[state.category,state.sortBy]
 )
 
 

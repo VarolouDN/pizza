@@ -49,8 +49,25 @@ const initialState={
   
   }
   
+    }
+
+    if(action.type==="SET_TOTAL_PRICE_MINUS"){
+  
+  return {
+  ...state,totalPrice:state.totalPrice-action.payload
+  
+  }
   
     }
+
+
+
+
+
+
+
+
+
     if(action.type==="SET_TOTAL_COUNT_PLUS"){
    
   return {

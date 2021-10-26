@@ -53,8 +53,23 @@ type:"SET_TOTAL_PRICE",
 payload
 
 }
+ }
+
+ export const setTotalPriceMinusActionCreator=(payload)=>{
+
+return {
+
+type:"SET_TOTAL_PRICE_MINUS",
+payload
+
+}
 
  }
+
+
+
+
+
  export const setPizzaCountActionCreator=(payload)=>{
 
 return {

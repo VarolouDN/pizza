@@ -3,7 +3,7 @@
 const initialState={
     pizzas:[],
     isLoaded:false,
-    
+    fullPizzas:[],
   
     
     
@@ -17,6 +17,18 @@ const initialState={
     
     return {
     ...state,pizzas:action.payload,
+       isLoaded:true
+    }
+  }
+
+
+
+  
+
+      if(action.type==="SET_FULL_PIZZAS"){
+    
+    return {
+    ...state,fullPizzas:action.payload,
        isLoaded:true
     }
   }
@@ -46,6 +58,34 @@ const initialState={
   }
     
      }
+
+
+
+     if(action.type==="SET_FULL_PIZZAS_COUNT"){
+    
+
+      if(state.fullPizzas.length>=0){
+    return {
+      
+   ...state,fullPizzas:[...state.fullPizzas.map(elem=>elem.id===action.payload.id?{...elem,pizzasCount:action.payload.count}:elem)]
+    
+}
+  }
+    
+     }
+     if(action.type==="SET_FULL_PIZZAS_GLOBAL_COUNT"){
+    
+
+      if(state.fullPizzas.length>=0){
+    return {
+      
+   ...state,fullPizzas:[...state.fullPizzas.map(elem=>elem.id===action.payload?{...elem,pizzasCount:elem.pizzasCount++}:elem)]
+    
+}
+  }
+    
+     }
+
 
 
 
@@ -81,7 +121,7 @@ return {
   ...state,pizzasInfo:[...state.pizzasInfo.map(elem=>elem.id===action.payload.id?
     {id:action.payload.id,count:action.payload.count,/*item:action.payload.item*/
       url:action.payload.url,name:action.payload.name,size:action.payload.size,
-      type:action.payload.type,item:action.payload.item,index:action.payload.index}:elem)]
+      type:action.payload.type,price:action.payload.price,item:action.payload.item,index:action.payload.index}:elem)]
   }
 
       }
