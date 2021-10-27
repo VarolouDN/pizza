@@ -90,6 +90,39 @@ const initialState={
 
 
 
+     if(action.type==="SET_DELETE_PIZZAS_INFO_CART"){
+   
+      return {
+      ...state,pizzasInfo:[]
+      
+      }
+        }
+    
+
+
+
+     if(action.type==="DELETE_PIZZAS_CART"){
+   
+      return {
+      ...state,pizzas:[...state.pizzas.map(elem=>elem.pizzasCount>0?{...elem,pizzasCount:0}:elem)]
+      
+      }
+        }
+    
+    
+    
+        if(action.type==="DELETE_FULL_PIZZAS_CART"){
+       
+      return {
+        ...state,fullPizzas:[...state.fullPizzas.map(elem=>elem.pizzasCount>0?{...elem,pizzasCount:0}:elem)]
+      
+      }
+        }
+
+
+
+
+
 
 
 

@@ -81,17 +81,23 @@ const initialState={
   ...state,totalCount:state.totalCount-1
   
   }
-    }/*
-    if(action.type==="SET_PIZZA_COUNT"){
+    }
   
-  return {
-  ...state,pizzaCount:state.items.pizzaCount +action.payload
+
+
+
+
+
+   
+
+
   
-  }
-  
-  
-    }*/
-  
+
+
+
+
+
+
   
       return state
   

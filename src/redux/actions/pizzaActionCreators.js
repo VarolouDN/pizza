@@ -24,6 +24,9 @@ type:"SET_LOADED",payload:payload
 })
 
 
+
+
+
 export const setFullPizzasActionCreatorThunk=(dispatch)=>{
   
 
@@ -69,21 +72,33 @@ export const fetchPizzas=(category,sortBy)=>(dispatch)=>{
 
 
 dispatch(setLoadedPizzasActionCreator(false))
+
+ if(category===null){
+  axios.get(`http://localhost:3001/pizzas`)
+  .then(response=>{
+    
+     
+    dispatch(setPizzasActionCreator(response.data.map(elem=>
+      
+      elem?{...elem,pizzasCount:0}:elem)))
+
+
+  })
+
+
+ }
+ else{
     axios.get/*fetch*/(`http://localhost:3001/pizzas?category=${category}&_sort=${sortBy.type}&_={desc}`)
     /*.then((response)=>response.json())*/.then(response=>{
       
        
       dispatch(setPizzasActionCreator(response.data.map(elem=>
         
-       
-        
-
-
         elem?{...elem,pizzasCount:0}:elem)))
  
 
     })
-
+  }
 /*store.pizzas.pizzasInfo.map(e=>e.id===elem.id && elem.pizzasCount=e.count)*/
 
 }
@@ -118,3 +133,41 @@ export const setFullPizzasCountActionCreator=(payload)=>{
 
   }
 }
+
+export const setDeletePizzasInfoCartActionCreator=()=>{
+
+  return {
+  
+  type:"SET_DELETE_PIZZAS_INFO_CART",
+  
+  }
+  
+   }
+
+
+
+
+
+
+export const deletePizzasCartActionCreator=()=>{
+
+  return {
+  
+  type:"DELETE_PIZZAS_CART",
+  
+  }
+  
+   }
+  
+  
+  
+   
+   export const deleteFullPizzasCartActionCreator=()=>{
+  
+  return {
+  
+  type:"DELETE_FULL_PIZZAS_CART",
+  
+  }
+  
+   }
