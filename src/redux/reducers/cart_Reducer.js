@@ -85,6 +85,28 @@ const initialState={
   
 
 
+    if(action.type==="DELETE_TOTAL_PRICE_TOTAL_COUNT"){
+   
+  return {
+  ...state,totalCount:0,totalPrice:0
+  
+  }
+    }
+  
+
+
+    if(action.type==="CHANGE_TOTAL_PRICE_TOTAL_COUNT"){
+   
+  return {
+  
+  ...state,totalCount:state.totalCount-action.payload.count,totalPrice:state.totalPrice-
+  (action.payload.count*action.payload.price)
+  
+  }
+    }
+  
+
+
 
 
 

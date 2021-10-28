@@ -88,7 +88,7 @@ const initialState={
 
 
 
-
+/*Очистка корзины */
 
      if(action.type==="SET_DELETE_PIZZAS_INFO_CART"){
    
@@ -123,13 +123,48 @@ const initialState={
 
 
 
+/*==========================Очистка корзины ======================*/
 
 
 
+/*Удаление элемента корзины=========================*/
+
+
+if(action.type==="DELETE_PIZZAS_INFO_PIZZA_CART"){
+       
+  return {
+    ...state,pizzasInfo:[...state.pizzasInfo.filter(elem=>elem.id!==action.payload)]
+  
+  }
+    }
+
+
+if(action.type==="DELETE_PIZZAS_PIZZA_CART"){
+       
+  return {
+    ...state,pizzas:[...state.pizzas.map(elem=>elem.id===action.payload?
+      
+     {...elem,pizzasCount:0}:elem
+      )]
+  
+  }
+    }
+
+
+if(action.type==="DELETE_FULL_PIZZAS_PIZZA_CART"){
+       
+  return {
+    ...state,fullPizzas:[...state.fullPizzas.map(elem=>elem.id===action.payload?
+      
+     {...elem,pizzasCount:0}:elem
+      )]
+  
+  }
+    }
 
 
 
-
+/*удаление пицц и изменение их цены и количества                 */
 
 
 

@@ -81,9 +81,39 @@ payload:payload
 
  }
 
+ export const deleteTotalPriceTotalCountActionCreator=()=>{
+
+return {
+
+type:"DELETE_TOTAL_PRICE_TOTAL_COUNT",
+
+
+}
+
+ }
+
 
  
+/*Изменение цены и количества при удалении элемента          */
 
+export const changeTotalPriceTotalCountActionCreator=(payload)=>{
+
+    return {
+    
+    type:"CHANGE_TOTAL_PRICE_TOTAL_COUNT",
+    payload
+    
+    
+    }
+    
+     }
+
+
+
+
+
+
+/*Изменение цены и количества при удалении элемента          */
 
 
  

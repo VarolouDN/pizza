@@ -133,7 +133,7 @@ export const setFullPizzasCountActionCreator=(payload)=>{
 
   }
 }
-
+/*Удаление пицц из корзины                     */
 export const setDeletePizzasInfoCartActionCreator=()=>{
 
   return {
@@ -171,3 +171,50 @@ export const deletePizzasCartActionCreator=()=>{
   }
   
    }
+
+   /*========================Удаление пицц из корзины=======================================*/
+
+
+
+
+
+
+
+   /*Удаление конкретных пицц из корзины                            */
+
+
+   export const deletePizzasInfoPizzaCartActionCreator=(payload)=>{
+  
+    return {
+    
+    type:"DELETE_PIZZAS_INFO_PIZZA_CART",
+    payload
+    
+    }
+    
+     }
+
+
+   export const deletePizzasPizzaCartActionCreator=(payload)=>{
+  
+    return {
+    
+    type:"DELETE_PIZZAS_PIZZA_CART",
+    payload
+    
+    }
+    
+     }
+
+   export const deleteFullPizzasPizzaCartActionCreator=(payload)=>{
+  
+    return {
+    
+    type:"DELETE_FULL_PIZZAS_PIZZA_CART",
+    payload
+    
+    }
+    
+     }
+
+     /*удаление пицц и изменение их цены и количества                 */
