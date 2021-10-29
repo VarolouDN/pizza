@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Preloader from "./Preloader/Preloader"
 import { setCartPizzasActionCreator, setPizzaCountActionCreator, setTotalCountActionCreator, setTotalCountPlusActionCreator, setTotalPriceActionCreator } from '../redux/actions/cartActionCreators';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFullPizzasCountActionCreator, setFullPizzasGlobalCountActionCreator, setPizzasCount, setPizzasCountActionCreator, setPizzasInfoActionCreator } from '../redux/actions/pizzaActionCreators';
+import { setFullPizzasCountActionCreator, setFullPizzasGlobalCountActionCreator, setFullPizzasSizeActionCreator, setFullPizzasTypeActionCreator, setPizzasCount, setPizzasCountActionCreator, setPizzasInfoActionCreator, setPizzasSizeActionCreator, setPizzasTypeActionCreator } from '../redux/actions/pizzaActionCreators';
 
 function PizzaBlock(props) {
 
@@ -91,11 +91,13 @@ const addPizzasInfo=()=>{
   count:result.pizzasCount,
    url:props.imageUrl,
    name:props.name,
-   size:props.sizes[activePizzaSize],
-   type:props.types[activePizzaType],
+   size:props.sizes,
+   type:props.types,
    item:props.elem,
    price:props.price,
-   index:props.index
+   index:props.index,
+   pizzaSize:props.sizes.index,
+   pizzaType:props.types.index
   }
 
 
@@ -123,11 +125,19 @@ pizzaRef.current.addEventListener("click",letCount)
 )
 
 const chooseSize=(index)=>{
-setActivePizzaSize(index)
+  let obj={
+    id:props.id,
+    pizzaSize:index
+  }
+dispatch(setFullPizzasSizeActionCreator(obj))
   
 }
 const chooseType=(index)=>{
-setActivePizzaType(index)
+  let obj={
+  id:props.id,
+  pizzaType:index
+  }
+  dispatch(setFullPizzasTypeActionCreator(obj))
   
 }
 
@@ -150,7 +160,7 @@ setActivePizzaType(index)
     <ul>
       {props.types.map((elem,index)=>{
        
-        return <li key={index} onClick={()=>chooseType(index)} className={activePizzaType===index?"active":""}>
+        return <li key={index} onClick={()=>chooseType(index)} className={props.types[result.pizzaType]===index?"active":""}>
           {elem===0?"тонкое":"традиционное"}</li>
          
           
@@ -158,9 +168,9 @@ setActivePizzaType(index)
      }
     </ul>
     <ul>
-      {props.sizes.map((elem,index)=>{
+      {props.sizes.map((el,index)=>{
       return <li key={index} onClick={()=>chooseSize(index)} 
-      className={activePizzaSize===index?"active":""}>{elem} см.</li>})
+      className={props.sizes[result.pizzaSize]===index?"active":""}>{el} см.</li>})
       }
     
     </ul>

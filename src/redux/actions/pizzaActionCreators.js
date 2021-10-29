@@ -42,7 +42,7 @@ export const setFullPizzasActionCreatorThunk=(dispatch)=>{
           
   
   
-          elem?{...elem,pizzasCount:0}:elem)))
+          elem?{...elem,pizzasCount:0,pizzaSize:0,pizzaType:0}:elem)))
    console.log(response.data)
   
       })
@@ -80,7 +80,7 @@ dispatch(setLoadedPizzasActionCreator(false))
      
     dispatch(setPizzasActionCreator(response.data.map(elem=>
       
-      elem?{...elem,pizzasCount:0}:elem)))
+      elem?{...elem,pizzasCount:0,pizzaSize:0,pizzaType:0}:elem)))
 
 
   })
@@ -94,7 +94,7 @@ dispatch(setLoadedPizzasActionCreator(false))
        
       dispatch(setPizzasActionCreator(response.data.map(elem=>
         
-        elem?{...elem,pizzasCount:0}:elem)))
+        elem?{...elem,pizzasCount:0, pizzaSize:0,pizzaType:0}:elem)))
  
 
     })
@@ -171,6 +171,71 @@ export const deletePizzasCartActionCreator=()=>{
   }
   
    }
+
+
+
+
+/*Установка типа и размеров пиццы  ==============          */ 
+
+export const  setFullPizzasTypeActionCreator=(payload)=>{
+
+return {
+
+type:"SET_FULL_PIZZAS_TYPE",
+
+payload
+
+
+}
+
+}
+
+
+export const  setFullPizzasSizeActionCreator=(payload)=>{
+
+return {
+
+type:"SET_FULL_PIZZAS_SIZE",
+
+payload
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Установка типа и размеров пиццы    ======================   */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    /*========================Удаление пицц из корзины=======================================*/
 

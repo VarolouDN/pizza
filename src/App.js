@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux"
 import { useSelector } from 'react-redux';
 import Home from './components/pages/Home';
 import { fetchPizzas, setFullPizzasActionCreator, setFullPizzasActionCreatorThunk, setPizzasActionCreator } from './redux/actions/pizzaActionCreators';
+import Finish from './components/pages/Finish';
 /*import { connect } from 'react-redux';*/
 
 
@@ -21,7 +22,8 @@ return{
 pizzas:pizzas.pizzas,
 sortBy:filters.sortBy,
 category:filters.category,
-fullPizzas:pizzas.fullPizzas
+fullPizzas:pizzas.fullPizzas,
+pizzasInfo:pizzas.pizzasInfo
 
 }
 
@@ -56,7 +58,12 @@ dispatch(setFullPizzasActionCreatorThunk)
 
         {/*<Route exact path="/" render={()=><Home pizzas= {state.pizzas}/>}/>*/}
         <Route exact path="/" component={Home}/>
-        <Route  path="/cart" component={Cart}/>
+
+      
+        <Route  path="/cart" component={Cart}/>:
+
+
+      <Route   path="/finish" component={Finish}/>
       
       </div>
     </div> 

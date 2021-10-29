@@ -4,7 +4,7 @@ const initialState={
     pizzas:[],
     isLoaded:false,
     fullPizzas:[],
-  
+    
     
     
     pizzasInfo:[]
@@ -86,6 +86,43 @@ const initialState={
     
      }
 
+/*Установка типа и размеров пиццы  ==============          */ 
+
+if(action.type==="SET_FULL_PIZZAS_TYPE"){
+    
+return{
+
+  ...state,fullPizzas:[...state.fullPizzas.map(elem=>elem.id===action.payload.id?{...elem,pizzaType:action.payload.pizzaType}:elem)]
+
+  
+}
+}
+
+if(action.type==="SET_FULL_PIZZAS_SIZE"){
+    
+return{
+
+  ...state,fullPizzas:[...state.fullPizzas.map(elem=>elem.id===action.payload.id?{...elem,pizzaSize:action.payload.pizzaSize}:elem)]
+
+  
+}
+  
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Установка типа и размеров пиццы  ==============          */ 
 
 
 /*Очистка корзины */
