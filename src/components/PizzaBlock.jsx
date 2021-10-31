@@ -7,11 +7,9 @@ import { setFullPizzasCountActionCreator, setFullPizzasGlobalCountActionCreator,
 
 function PizzaBlock(props) {
 
-
-const[activePizzaSize,setActivePizzaSize]=useState(0)
-const[activePizzaType,setActivePizzaType]=useState(0)
-
-
+/*const[activePizzaSize,setActivePizzaSize]=useState(0)
+const[activePizzaType,setActivePizzaType]=useState(0)*/
+ 
 
 let result=props.fullPizzas.some(e=>e.id===props.id /*&& e.category===props.category*/ )?props.fullPizzas.filter(e=>e.id===props.id)[0]:props
 
@@ -72,7 +70,7 @@ dispatch(setTotalPriceActionCreator(props.price))*/
 }
 
 
-const addPizzasInfo=()=>{
+const addPizzasInfo=(index,ind)=>{
   /*или здесь условие*/
 
   dispatch(setTotalCountPlusActionCreator(result.pizzasCount))
@@ -91,13 +89,13 @@ const addPizzasInfo=()=>{
   count:result.pizzasCount,
    url:props.imageUrl,
    name:props.name,
-   size:props.sizes,
-   type:props.types,
+   sizes:props.sizes,
+   types:props.types,
    item:props.elem,
    price:props.price,
    index:props.index,
-   pizzaSize:props.sizes.index,
-   pizzaType:props.types.index
+   pizzaSize:props.pizzaSize,
+   pizzaType:props.pizzaType
   }
 
 
@@ -130,14 +128,16 @@ const chooseSize=(index)=>{
     pizzaSize:index
   }
 dispatch(setFullPizzasSizeActionCreator(obj))
+dispatch(setPizzasSizeActionCreator(obj))
   
 }
-const chooseType=(index)=>{
+const chooseType=(ind)=>{
   let obj={
   id:props.id,
-  pizzaType:index
+  pizzaType:ind
   }
   dispatch(setFullPizzasTypeActionCreator(obj))
+  dispatch(setPizzasTypeActionCreator(obj))
   
 }
 
@@ -158,9 +158,9 @@ const chooseType=(index)=>{
   <h4 className="pizza-block__title">{props.name}</h4>
   <div className="pizza-block__selector">
     <ul>
-      {props.types.map((elem,index)=>{
+      {props.types.map((elem,ind)=>{
        
-        return <li key={index} onClick={()=>chooseType(index)} className={props.types[result.pizzaType]===index?"active":""}>
+        return <li key={ind} onClick={()=>chooseType(ind)} className={result.pizzaType===ind?"active":""}>
           {elem===0?"тонкое":"традиционное"}</li>
          
           
@@ -168,9 +168,9 @@ const chooseType=(index)=>{
      }
     </ul>
     <ul>
-      {props.sizes.map((el,index)=>{
+      {props.sizes.map((elem,index)=>{
       return <li key={index} onClick={()=>chooseSize(index)} 
-      className={props.sizes[result.pizzaSize]===index?"active":""}>{el} см.</li>})
+      className={result.pizzaSize===index?"active":""}>{props.sizes===0?props.sizes[0]:props.sizes[index]} см.</li>})
       }
     
     </ul>

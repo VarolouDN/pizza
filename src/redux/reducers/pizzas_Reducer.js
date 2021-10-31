@@ -109,6 +109,27 @@ return{
   
 
  }
+if(action.type==="SET_PIZZAS_TYPE"){
+    
+return{
+
+  ...state,pizzas:[...state.pizzas.map(elem=>elem.id===action.payload.id?{...elem,pizzaType:action.payload.pizzaType}:elem)]
+
+  
+}
+}
+
+if(action.type==="SET_PIZZAS_SIZE"){
+    
+return{
+
+  ...state,pizzas:[...state.pizzas.map(elem=>elem.id===action.payload.id?{...elem,pizzaSize:action.payload.pizzaSize}:elem)]
+
+  
+}
+  
+
+ }
 
 
 
@@ -211,7 +232,7 @@ if(action.type==="DELETE_FULL_PIZZAS_PIZZA_CART"){
 
       if(action.type==="SET_PIZZAS_INFO"){
   
-if(state===initialState || !state.pizzasInfo.some(elem=>elem.id===action.payload.id)){
+if(state===initialState || !state.pizzasInfo.some(elem=>elem.id===action.payload.id )){
 
 return {
     ...state,pizzasInfo:[...state.pizzasInfo,action.payload]
@@ -220,13 +241,66 @@ return {
     
       }
 
-      if(state.pizzasInfo.some(elem=>elem.id===action.payload.id)){
+    
+
+     /* if( state.pizzasInfo.some(elem=>elem.id===action.payload.id && elem.pizzaSize!==action.payload.pizzaSize )){
+
+        return {
+            ...state,pizzasInfo:[...state.pizzasInfo,action.payload.]
+            }
+            
+            
+              }*/
+     if( state.pizzasInfo.some(elem=>elem.id===action.payload.id && elem.pizzaType!==action.payload.pizzaType )){
+
+        return {
+
+        ...state,pizzasInfo:[...state.pizzasInfo,{...action.payload}].map(
+
+          elem=>elem.id===action.payload.id && elem.pizzaType===action.payload.pizzaType?
+
+          
+          {...elem,count:action.payload.count-1}:elem)
+        
+
+            }
+            
+          
+              }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      if(state.pizzasInfo.some(elem=>elem.id===action.payload.id /*&& elem.pizzaSize===action.payload.pizzaSize
+        
+        && elem.pizzaType===action.payload.pizzaType*/)){
+
+
 
 return {
-  ...state,pizzasInfo:[...state.pizzasInfo.map(elem=>elem.id===action.payload.id?
-    {id:action.payload.id,count:action.payload.count,/*item:action.payload.item*/
-      url:action.payload.url,name:action.payload.name,size:action.payload.size,
-      type:action.payload.type,price:action.payload.price,item:action.payload.item,index:action.payload.index}:elem)]
+
+  ...state,pizzasInfo:[...state.pizzasInfo.map(elem=>elem.id===action.payload.id ?
+    {id:action.payload.id,count:action.payload.count,
+      url:action.payload.url,name:action.payload.name,sizes:action.payload.sizes,
+      types:action.payload.types,price:action.payload.price,item:action.payload.item,index:action.payload.index
+    ,pizzaSize:action.payload.pizzaSize,pizzaType:action.payload.pizzaType
+  
+  }:elem)]
   }
 
       }

@@ -102,7 +102,8 @@ const addPizza=(elem)=>{
   return   <PizzaBlock elem={elem} rating={elem.rating} price={elem.price} sizes={elem.sizes} category={elem.category} key ={index} name={elem.name} 
   imageUrl={elem.imageUrl} id={elem.id}  types={elem.types} isLoaded={state.isLoaded} /*addPizza={()=>addPizza(elem) }*/
    totalCount={state.totalCount} pizzasCount={elem.pizzasCount} fullPizzas={state.fullPizzas}
-    pizzasInfo={state.pizzasInfo} /*addPizzasInfo={()=>addPizzasInfo(elem)} */index={index}/>
+    pizzasInfo={state.pizzasInfo} /*addPizzasInfo={()=>addPizzasInfo(elem)} */index={index}
+     pizzaSize={elem.pizzaSize} pizzaType={elem.pizzaType}/>
 
 }):Array(20).fill(0).map((_,index)=>{
 

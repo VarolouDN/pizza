@@ -203,6 +203,32 @@ payload
 }
 
 }
+export const  setPizzasTypeActionCreator=(payload)=>{
+
+return {
+
+type:"SET_PIZZAS_TYPE",
+
+payload
+
+
+}
+
+}
+
+
+export const  setPizzasSizeActionCreator=(payload)=>{
+
+return {
+
+type:"SET_PIZZAS_SIZE",
+
+payload
+
+
+}
+
+}
 
 
 

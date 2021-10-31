@@ -89,10 +89,12 @@ function changeCountPlus(elem){
       count:elem.count,
       url:elem.url,
       name:elem.name,
-      size:elem.size,
-      type:elem.type,
+      sizes:elem.sizes,
+      types:elem.types,
       price:elem.price,
-       item:elem.item
+       item:elem.item,
+       pizzaSize:elem.pizzaSize,
+       pizzaType:elem.pizzaType
       }
 
     dispatch(setPizzasInfoActionCreator(obj))
@@ -135,10 +137,12 @@ let obj={
   count:elem.count,
   url:elem.url,
   name:elem.name,
-  size:elem.size,
-  type:elem.type,
+  sizes:elem.sizes,
+  types:elem.types,
   price:elem.price,
-   item:elem.item
+   item:elem.item,
+   pizzaSize:elem.pizzaSize,
+   pizzaType:elem.pizzaType
   }
 
     dispatch(setPizzasInfoActionCreator(obj))
@@ -209,7 +213,7 @@ let obj={
 
 
     <h3>{elem.name}</h3>
-    <p>{elem.type===0?"тонкое":"традиционное"}, {elem.size} см.</p>
+    <p>{elem.types[elem.pizzaType]===0?"тонкое":"традиционное"} {elem.sizes[elem.pizzaSize]} см.</p>
   </div>
 
 
